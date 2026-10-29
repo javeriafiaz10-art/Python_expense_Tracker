@@ -1,2 +1,2 @@
-# Student--Result--Manager
-A beginner-friendly Python project to add students, view student records, and check pass/fail results using dictionaries and conditional statements.
+#python-expense-tracker
+A simple Python-based Expense Tracker to add expenses, view records, and calculate total spending.
