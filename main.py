@@ -1,44 +1,61 @@
-student = {}
+#1. Expense Tracker Project
+expenses = [] #list of all expenses in form of dictionary 
+print(" Welcome to expense tracker: ")
 
 while True:
-    print("\n------STUDENTS MANAGER APP------")
-    print("1. Add Student")
-    print("2. View all Students")
-    print("3. Check result")
-    print("4. Check Attendance")
-    print("5. Exit")
+    print("=== MENU ====")
+    print("1. Add Expense")
+    print("2. View all Expenses")
+    print("3. view Totel spending")
+    print("4. Exit")
+    #ADD Expense
 
-    choice = input("Enter Your Choice:  ")
-    #Add student
+    choice = int(input("Please Enter Your Choice : "))
+    if (choice == 1):
+        date = input("Please Enter date")
+        category = input("Please Enter the category")
+        description = input("Please Enter detail")
+        amount = float (input("Please Enter Your Amount"))
+        expense={
+            "date" : date,
+            "category" : category,
+            "description" : description,
+            "amount" : amount
+        }
+        expenses.append(expense)
+        print("\n Expense added successfully")
 
-    if choice == "1":
-        name = input("Enter your Name: ")
-        marks = int(input("Enter Marks: "))
-        student[name] = marks
-        print(f" {name} Successfully Added!")
-    #View Students
-    elif choice == "2":
-        if not student:
-            print("No Student found!")
+ #2. View all Expenses
+
+
+    elif (choice == 2):
+        if (len(expenses)==0):
+            print("\n No expenses has been added yet. ")
         else:
-            for name, marks in student.items():
-                print(name,":", marks)
-    #check result
-    elif choice == "3":
-        name = input("Enter your name: ")
-        if name in student:
-            marks = student[name]
-            if marks >= 40:
-                print("PASS")
-            else:
-                print("FAIL")
+            print("==== All Expense ====")
+            count = 1
+            for eachexpense in expenses:
+                print(
+                    f"expense no{count} ->"
+                    f"{eachexpense["date"]}",
+                    f"{eachexpense["category"]},"
+                    f"{eachexpense["description"]},"
+                    f"{eachexpense["amount"]}"
+                    ) 
+                count = count + 1   
 
-            
-        else:
-                print("Student Not Found!")        
+    #3 . view total spending
 
 
-
-
-
+    elif(choice == 3):
+        total = 0
+        for eachexpense in expenses:
+            total = total + eachexpense["amount"]
+        print("\n TOTAL SPENDING = " , total )
     
+    #4. EXIT
+    elif(choice == 4):
+        print("Thank you for using the system")
+        break
+    else:
+        print("INVALID CHOICE")
